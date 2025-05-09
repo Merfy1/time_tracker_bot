@@ -1,6 +1,7 @@
 import logging
 import random
 import requests
+from datetime import datetime
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 from config import TELEGRAM_TOKEN
@@ -132,6 +133,13 @@ def handle_message(update: Update, context: CallbackContext):
 
                 logger.info(f"Пользователь {result[1]} вошел в систему (Код: {entered_code})")
 
+                # Сохраняем ID пользователя для дальнейших действий
+                context.user_data["employee_id"] = result[0]
+
+                buttons = [[KeyboardButton("🔛 Начать смену")]]
+                reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
+                update.message.reply_text("Нажми кнопку ниже, чтобы начать смену.", reply_markup=reply_markup)
+
             else:
                 update.message.reply_text("Неверный код! Попробуй снова.")
                 logger.warning(f"Неудачная попытка входа с кодом: {entered_code}")
@@ -141,6 +149,99 @@ def handle_message(update: Update, context: CallbackContext):
         except Exception as e:
             logger.error(f"Ошибка при входе: {e}")
             update.message.reply_text("Ошибка входа. Попробуй позже.")
+
+    # Начать смену
+    if text == "🔛 Начать смену":
+        employee_id = context.user_data.get("employee_id")
+        if not employee_id:
+            update.message.reply_text("Сначала нужно войти.")
+            return
+
+        connection = create_connection()
+        cursor = connection.cursor()
+
+        try:
+            # Проверяем, есть ли уже активная смена
+            cursor.execute(
+                "SELECT * FROM shifts WHERE employee_id = ? AND end_time IS NULL",
+                (employee_id,)
+            )
+            existing_shift = cursor.fetchone()
+
+            if existing_shift:
+                update.message.reply_text("Ты уже на смене.")
+                return
+
+            # Создаем новую смену
+            cursor.execute(
+                "INSERT INTO shifts (employee_id, start_time) VALUES (?, ?)",
+                (employee_id, datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+            )
+            connection.commit()
+
+            update.message.reply_text("Смена началась!")
+
+            logger.info(f"Смена начата для сотрудника {employee_id}")
+
+            connection.close()
+
+            buttons = [[KeyboardButton("🔚 Закончить смену")]]
+            reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
+            update.message.reply_text("Когда захочешь закончить смену, нажми кнопку ниже.", reply_markup=reply_markup)
+
+        except Exception as e:
+            logger.error(f"Ошибка при начале смены: {e}")
+            update.message.reply_text("Не удалось начать смену.")
+
+    # Закончить смену
+    if text == "🔚 Закончить смену":
+        employee_id = context.user_data.get("employee_id")
+        if not employee_id:
+            update.message.reply_text("Сначала нужно войти.")
+            return
+
+        connection = create_connection()
+        cursor = connection.cursor()
+
+        try:
+            # Получаем активную смену
+            cursor.execute(
+                "SELECT id, start_time FROM shifts WHERE employee_id = ? AND end_time IS NULL",
+                (employee_id,)
+            )
+            shift = cursor.fetchone()
+
+            if not shift:
+                update.message.reply_text("Активная смена не найдена.")
+                return
+
+            shift_id, start_time_str = shift
+            start_time = datetime.strptime(start_time_str, "%Y-%m-%d %H:%M:%S")
+            end_time = datetime.now()
+
+            duration_minutes = int((end_time - start_time).total_seconds() / 60)
+            salary = duration_minutes * 2
+
+            # Обновляем запись в БД
+            cursor.execute(
+                "UPDATE shifts SET end_time = ? WHERE id = ?",
+                (end_time.strftime("%Y-%m-%d %H:%M:%S"), shift_id)
+            )
+            connection.commit()
+
+            update.message.reply_text(
+                f"✅ Смена завершена.\n"
+                f"🕒 Время на смене: {duration_minutes} мин\n"
+                f"💰 Заработано: {salary} руб"
+            )
+
+            buttons = [[KeyboardButton("🔛 Начать смену")]]
+            reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
+            update.message.reply_text("Готов снова начать — нажми кнопку ниже.", reply_markup=reply_markup)
+
+        except Exception as e:
+            logger.error(f"Ошибка при завершении смены: {e}")
+            update.message.reply_text("Не удалось завершить смену.")
 
 # Основная функция запуска бота
 def main():

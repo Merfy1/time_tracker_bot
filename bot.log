@@ -27,3 +27,152 @@
 2025-05-09 18:39:07,867 - ERROR - Ошибка с API собак: HTTPSConnectionPool(host='random.xn--dg-fmc', port=443): Max retries exceeded with url: /woof.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1027b76a0>: Failed to resolve 'random.xn--dg-fmc' ([Errno 8] nodename nor servname provided, or not known)"))
 2025-05-09 18:39:08,285 - INFO - Пользователь Саша вошел в систему (Код: CODE-5427)
 2025-05-09 18:55:39,495 - INFO - Received signal 2 (SIGINT), stopping...
+2025-05-09 20:03:20,353 - INFO - Бот запущен!
+2025-05-09 20:03:42,722 - INFO - Пользователь Merfy (633566051) запустил бота.
+2025-05-09 20:03:48,130 - INFO - Зарегистрирован новый пользователь: Сашенька (Код: CODE-7466)
+2025-05-09 20:04:04,027 - ERROR - Ошибка с API собак: HTTPSConnectionPool(host='random.xn--dg-fmc', port=443): Max retries exceeded with url: /woof.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x11855a550>: Failed to resolve 'random.xn--dg-fmc' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-05-09 20:04:05,104 - INFO - Пользователь Сашенька вошел в систему (Код: CODE-7466)
+2025-05-09 20:04:14,216 - INFO - Received signal 2 (SIGINT), stopping...
+2025-05-09 20:05:15,836 - INFO - Бот запущен!
+2025-05-09 20:05:26,242 - INFO - Пользователь Merfy (633566051) запустил бота.
+2025-05-09 20:05:40,472 - INFO - Зарегистрирован новый пользователь: Сашка (Код: CODE-5742)
+2025-05-09 20:05:59,915 - ERROR - Ошибка с API собак: HTTPSConnectionPool(host='random.xn--dg-fmc', port=443): Max retries exceeded with url: /woof.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x108527550>: Failed to resolve 'random.xn--dg-fmc' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-05-09 20:06:00,466 - INFO - Пользователь Сашка вошел в систему (Код: CODE-5742)
+2025-05-09 20:07:47,170 - INFO - Received signal 2 (SIGINT), stopping...
+2025-05-09 20:07:53,620 - INFO - Бот запущен!
+2025-05-09 20:08:01,488 - INFO - Пользователь Merfy (633566051) запустил бота.
+2025-05-09 20:08:23,162 - WARNING - Неудачная попытка входа с кодом: import logging
+import random
+import requests
+from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from config import TELEGRAM_TOKEN
+from database import create_connection
+
+# Настройка логирования
+logging.basicConfig(
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    level=logging.INFO,
+    filename='bot.log'
+)
+logger = logging.getLogger(__name__)
+
+# Функция получения случайного изображения
+def get_random_image():
+    dog_api = "https://random.dog/woof.json"
+    cat_api = "https://api.thecatapi.com/v1/images/search"
+    try:
+        response = requests.get(dog_api, timeout=5)
+        if response.status_code == 200:
+            image_url = response.json().get("url")
+            if image_url:
+                return image_url
+    except Exception as e:
+        logger.error(f"Ошибка с API собак: {e}")
+
+    try:
+        response = requests.get(cat_api, timeout=5)
+        if response.status_code == 200:
+            image_url = response.json()[0].get("url")
+            if image_url:
+                return image_url
+    except Exception as e:
+        logger.error(f"Ошибка с API котов: {e}")
+
+    return "https://placekitten.com/400/400"
+
+# Клавиатура после входа
+def work_keyboard():
+    return ReplyKeyboardMarkup(
+        [[KeyboardButton("▶️ Начать смену")], [KeyboardButton("⏹ Завершить смену")]],
+        resize_keyboard=True
+    )
+
+# Старт
+def start(update: Update, context: CallbackContext):
+    user = update.message.from_user
+    chat_id = update.message.chat_id
+    logger.info(f"Пользователь {user.first_name} ({chat_id}) запустил бота.")
+
+    buttons = [
+        [KeyboardButton("✅ Регистрация")],
+        [KeyboardButton("🔑 Войти")],
+    ]
+    reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True, one_time_keyboard=True)
+
+    update.message.reply_text(f"Привет, {user.first_name}! Выбери действие:", reply_markup=reply_markup)
+
+# Обработка сообщений
+def handle_message(update: Update, context: CallbackContext):
+    user = update.message.from_user
+    chat_id = update.message.chat_id
+    text = update.message.text
+
+    if text == "✅ Регистрация":
+        update.message.reply_text("Введите ваше ФИО для регистрации:")
+        context.user_data["is_registering"] = True
+        return
+
+    if context.user_data.get("is_registering"):
+        full_name = update.message.text
+        unique_code = f"CODE-{random.randint(1000, 9999)}"
+
+        connection = create_connection()
+        cursor = connection.cursor()
+
+        try:
+            cursor.execute("SELECT * FROM employees WHERE full_name = ?", (full_name,))
+            result = cursor.fetchone()
+
+            if result:
+                update.message.reply_text(
+                    "Пользователь с таким ФИО уже существует! Попробуйте ввести другое ФИО или войти."
+                )
+                update.message.reply_text("Нажми «Войти», чтобы попробовать снова.",
+                    reply_markup=ReplyKeyboardMarkup([[KeyboardButton("🔑 Войти")]], resize_keyboard=True))
+                return
+
+            cursor.execute("INSERT INTO employees (full_name, unique_code) VALUES (?, ?)", (full_name, unique_code))
+            connection.commit()
+
+            update.message.reply_text(f"Регистрация завершена! Твой код: {unique_code}")
+            update.message.reply_text("Теперь можешь войти:",
+                reply_markup=ReplyKeyboardMarkup([[KeyboardButton("🔑 Войти")]], resize_keyboard=True))
+
+            logger.info(f"Зарегистрирован новый пользователь: {full_name} (Код: {unique_code})")
+
+            connection.close()
+            context.user_data["is_registering"] = False
+        except Exception as e:
+            logger.error(f"Ошибка при регистрации: {e}")
+            update.message.reply_text("Ошибка регистрации. Попробуй позже.")
+        return
+
+    if text == "🔑 Войти":
+        update.message.reply_text("Введите ваш уникальный код:")
+        context.user_data["is_logging_in"] = True
+        return
+
+    if context.user_data.get("is_logging_in"):
+2025-05-09 20:08:45,819 - INFO - Пользователь Merfy (633566051) запустил бота.
+2025-05-09 20:08:52,824 - ERROR - Ошибка с API собак: HTTPSConnectionPool(host='random.xn--dg-fmc', port=443): Max retries exceeded with url: /woof.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x109dfb550>: Failed to resolve 'random.xn--dg-fmc' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-05-09 20:08:53,932 - INFO - Пользователь Сашенька вошел в систему (Код: CODE-7466)
+2025-05-09 20:10:56,843 - INFO - Received signal 2 (SIGINT), stopping...
+2025-05-09 20:12:20,535 - INFO - Бот запущен!
+2025-05-09 20:12:25,673 - INFO - Пользователь Merfy (633566051) запустил бота.
+2025-05-09 20:12:35,772 - INFO - Пользователь Сашенька вошел в систему (Код: CODE-7466)
+2025-05-09 20:13:15,541 - INFO - Пользователь Merfy (633566051) запустил бота.
+2025-05-09 20:13:24,615 - INFO - Пользователь Сашенька вошел в систему (Код: CODE-7466)
+2025-05-09 20:20:49,765 - INFO - Received signal 2 (SIGINT), stopping...
+2025-05-09 20:22:38,546 - INFO - Бот запущен!
+2025-05-09 20:22:56,577 - INFO - Пользователь Merfy (633566051) запустил бота.
+2025-05-09 20:23:08,566 - ERROR - Ошибка с API собак: HTTPSConnectionPool(host='random.xn--dg-fmc', port=443): Max retries exceeded with url: /woof.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1079a23a0>: Failed to resolve 'random.xn--dg-fmc' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-05-09 20:23:09,390 - INFO - Пользователь Сашенька вошел в систему (Код: CODE-7466)
+2025-05-09 20:23:17,299 - ERROR - Ошибка при начале смены: local variable 'cursor' referenced before assignment
+2025-05-09 20:23:19,822 - ERROR - Ошибка при начале смены: local variable 'cursor' referenced before assignment
+2025-05-09 20:23:34,876 - INFO - Received signal 2 (SIGINT), stopping...
+2025-05-09 20:24:54,322 - INFO - Бот запущен!
+2025-05-09 20:25:06,625 - INFO - Пользователь Merfy (633566051) запустил бота.
+2025-05-09 20:25:15,032 - ERROR - Ошибка с API собак: HTTPSConnectionPool(host='random.xn--dg-fmc', port=443): Max retries exceeded with url: /woof.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1061be520>: Failed to resolve 'random.xn--dg-fmc' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-05-09 20:25:15,904 - INFO - Пользователь Сашенька вошел в систему (Код: CODE-7466)
+2025-05-09 20:25:18,302 - INFO - Смена начата для сотрудника 10
