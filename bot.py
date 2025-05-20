@@ -1,9 +1,11 @@
 import logging
+import sqlite3
 import random
 import requests
 from datetime import datetime
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from config import TELEGRAM_TOKEN
 from database import create_connection
 
