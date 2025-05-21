@@ -99,7 +99,9 @@ def handle_message(update: Update, context: CallbackContext):
                 update.message.reply_photo(photo=image_url)
                 logger.info(f"Пользователь {result[1]} вошел в систему (Код: {entered_code})")
                 context.user_data["employee_id"] = result[0]
-                buttons = [[KeyboardButton("🔛 Начать смену")]]
+                buttons = [
+                    [KeyboardButton("🔛 Начать смену"), KeyboardButton("📜 История смен")]
+                ]
                 reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
                 update.message.reply_text("Нажми кнопку ниже, чтобы начать смену.", reply_markup=reply_markup)
             else:
@@ -128,11 +130,12 @@ def handle_message(update: Update, context: CallbackContext):
             connection.commit()
             update.message.reply_text("Смена началась!")
             logger.info(f"Смена начата для сотрудника {employee_id}")
-            
-            # Показать кнопки при начале смены
+
+            # Кнопки при начале смены
             buttons = [
                 [KeyboardButton("☕ Начать перерыв")],
-                [KeyboardButton("🔚 Закончить смену")]
+                [KeyboardButton("🔚 Закончить смену")],
+                [KeyboardButton("📜 История смен")]
             ]
             reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
             update.message.reply_text("Выбери действие:", reply_markup=reply_markup)
@@ -141,6 +144,47 @@ def handle_message(update: Update, context: CallbackContext):
             update.message.reply_text("Не удалось начать смену.")
         finally:
             connection.close()
+        return
+    if text == "📜 История смен":
+        employee_id = context.user_data.get("employee_id")
+        if not employee_id:
+            update.message.reply_text("Сначала нужно войти.")
+            return
+        connection = create_connection()
+        cursor = connection.cursor()
+        try:
+            cursor.execute("""
+                SELECT start_time, end_time, total_break_delay 
+                FROM shifts 
+                WHERE employee_id = ? AND end_time IS NOT NULL
+                ORDER BY start_time DESC
+            """, (employee_id,))
+            shifts = cursor.fetchall()
+            if not shifts:
+                update.message.reply_text("История смен пустая.")
+                return
+
+            total_earnings = 0
+            message_lines = ["📜 *История смен:*"]
+            for start_str, end_str, break_delay in shifts:
+                start_dt = datetime.strptime(start_str, "%Y-%m-%d %H:%M:%S")
+                end_dt = datetime.strptime(end_str, "%Y-%m-%d %H:%M:%S")
+                duration = int((end_dt - start_dt).total_seconds() / 60)  # мин
+                break_delay = break_delay or 0
+                salary = (duration - break_delay) * 2
+                total_earnings += salary
+                message_lines.append(f"🕒 {start_dt.strftime('%d.%m.%Y %H:%M')} - {end_dt.strftime('%H:%M')}, "
+                                     f"Длительность: {duration} мин, Перерывы: {break_delay} мин, Заработано: {salary} руб")
+
+            message_lines.append(f"\n💰 *Всего заработано:* {total_earnings} руб")
+            update.message.reply_text("\n".join(message_lines), parse_mode="Markdown")
+
+        except Exception as e:
+            logger.error(f"Ошибка при выводе истории смен: {e}")
+            update.message.reply_text("Не удалось получить историю смен.")
+        finally:
+            connection.close()
+        return
 
     if text == "☕ Начать перерыв":
         employee_id = context.user_data.get("employee_id")
@@ -245,7 +289,10 @@ def handle_message(update: Update, context: CallbackContext):
                 f"🧘 Перерывы: {total_break_delay} мин\n"
                 f"💰 Заработано: {salary} руб"
             )
-            buttons = [[KeyboardButton("🔛 Начать смену")]]
+            buttons = [
+                [KeyboardButton("🔛 Начать смену")],
+                [KeyboardButton("📜 История смен")]
+            ]
             reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
             update.message.reply_text("Готов снова начать — нажми кнопку ниже.", reply_markup=reply_markup)
         except Exception as e:
@@ -253,6 +300,7 @@ def handle_message(update: Update, context: CallbackContext):
             update.message.reply_text("Не удалось завершить смену.")
         finally:
             connection.close()
+        return
 
 def main():
     updater = Updater(TELEGRAM_TOKEN, use_context=True)
