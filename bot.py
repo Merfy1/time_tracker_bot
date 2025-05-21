@@ -45,6 +45,44 @@ def start(update: Update, context: CallbackContext):
     reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True, one_time_keyboard=True)
     update.message.reply_text(f"Привет, {user.first_name}! Выбери действие:", reply_markup=reply_markup)
 
+def send_shift_status(update, context):
+    employee_id = context.user_data.get("employee_id")
+    connection = create_connection()
+    cursor = connection.cursor()
+    try:
+        cursor.execute("SELECT id, start_time FROM shifts WHERE employee_id = ? AND end_time IS NULL", (employee_id,))
+        shift = cursor.fetchone()
+        if not shift:
+            update.message.reply_text("У тебя сейчас нет активной смены.")
+            return
+
+        shift_id, start_time_str = shift
+        start_time = datetime.strptime(start_time_str, "%Y-%m-%d %H:%M:%S")
+        now = datetime.now()
+        duration = int((now - start_time).total_seconds() / 60)
+
+        cursor.execute("SELECT COUNT(*) FROM breaks WHERE shift_id = ? AND end_time IS NOT NULL", (shift_id,))
+        break_count = cursor.fetchone()[0]
+
+        message = (
+            f"🕓 Смена началась: {start_time.strftime('%H:%M:%S')}\n"
+            f"⏱ Длительность: {duration} мин\n"
+            f"☕ Завершённых перерывов: {break_count}"
+        )
+
+        buttons = [
+            [KeyboardButton("🔁 Закончить перерыв")] if context.user_data.get("on_break") else [KeyboardButton("☕ Начать перерыв")],
+            [KeyboardButton("🔄 Обновить смену"), KeyboardButton("🔚 Закончить смену")]
+        ]
+        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
+        update.message.reply_text(message, reply_markup=reply_markup)
+
+    except Exception as e:
+        logger.error(f"Ошибка при получении статуса смены: {e}")
+        update.message.reply_text("Не удалось получить данные смены.")
+    finally:
+        connection.close()
+
 def handle_message(update: Update, context: CallbackContext):
     user = update.message.from_user
     chat_id = update.message.chat_id
@@ -120,17 +158,20 @@ def handle_message(update: Update, context: CallbackContext):
         if not employee_id:
             update.message.reply_text("Сначала нужно войти.")
             return
+
         connection = create_connection()
         cursor = connection.cursor()
         try:
             cursor.execute("SELECT * FROM shifts WHERE employee_id = ? AND end_time IS NULL", (employee_id,))
             if cursor.fetchone():
                 update.message.reply_text("Ты уже на смене.")
+                send_shift_status(update, context)  # Покажем текущую смену, если уже активна
                 return
-            cursor.execute("INSERT INTO shifts (employee_id, start_time) VALUES (?, ?)",
-                        (employee_id, datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+
+            now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            cursor.execute("INSERT INTO shifts (employee_id, start_time) VALUES (?, ?)", (employee_id, now))
             connection.commit()
-            
+
             # Получаем имя сотрудника для сообщения админу
             cursor.execute("SELECT full_name FROM employees WHERE id = ?", (employee_id,))
             full_name = cursor.fetchone()[0]
@@ -144,20 +185,17 @@ def handle_message(update: Update, context: CallbackContext):
                 text=f"🔔 Сотрудник {full_name} начал смену."
             )
 
-            # Кнопки при начале смены
-            buttons = [
-                [KeyboardButton("☕ Начать перерыв")],
-                [KeyboardButton("🔚 Закончить смену")],
-                [KeyboardButton("📜 История смен")]
-            ]
-            reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-            update.message.reply_text("Выбери действие:", reply_markup=reply_markup)
+            # Отображаем статус смены и нужные кнопки
+            send_shift_status(update, context)
+
         except Exception as e:
             logger.error(f"Ошибка при начале смены: {e}")
             update.message.reply_text("Не удалось начать смену.")
         finally:
             connection.close()
         return
+    if text == "🔄 Обновить смену":
+        send_shift_status(update, context)
     if text == "📜 История смен":
         employee_id = context.user_data.get("employee_id")
         if not employee_id:
@@ -340,6 +378,13 @@ def handle_message(update: Update, context: CallbackContext):
                 f"🕒 Время на смене: {duration_minutes} мин\n"
                 f"🧘 Перерывы: {total_break_delay} мин\n"
                 f"💰 Заработано: {salary} руб"
+            )
+            cursor.execute("SELECT full_name FROM employees WHERE id = ?", (employee_id,))
+            full_name = cursor.fetchone()[0]
+
+            context.bot.send_message(
+                chat_id=int(ADMIN_ID),
+                text=f"🔔 Сотрудник {full_name} завершил смену."
             )
             buttons = [
                 [KeyboardButton("🔛 Начать смену")],
