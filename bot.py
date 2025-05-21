@@ -1,4 +1,5 @@
 import logging
+from telegram import ParseMode
 import random
 from config import ADMIN_ID
 import requests
@@ -108,7 +109,7 @@ def handle_message(update: Update, context: CallbackContext):
                 return
             cursor.execute("INSERT INTO employees (full_name, unique_code) VALUES (?, ?)", (full_name, unique_code))
             connection.commit()
-            update.message.reply_text(f"Регистрация завершена! Твой код: {unique_code}")
+            update.message.reply_text(f"Регистрация завершена! Твой код:\n`{unique_code}`", parse_mode=ParseMode.MARKDOWN)
             buttons = [[KeyboardButton("🔑 Войти")]]
             reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True, one_time_keyboard=True)
             update.message.reply_text("Теперь можешь войти:", reply_markup=reply_markup)
@@ -138,19 +139,23 @@ def handle_message(update: Update, context: CallbackContext):
                 update.message.reply_photo(photo=image_url)
                 logger.info(f"Пользователь {result[1]} вошел в систему (Код: {entered_code})")
                 context.user_data["employee_id"] = result[0]
+                context.user_data["is_logging_in"] = False  # Убираем только при успешном входе
+
                 buttons = [
                     [KeyboardButton("🔛 Начать смену"), KeyboardButton("📜 История смен")]
                 ]
                 reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
                 update.message.reply_text("Нажми кнопку ниже, чтобы начать смену.", reply_markup=reply_markup)
             else:
-                update.message.reply_text("Неверный код! Попробуй снова.")
+                update.message.reply_text("❌ Неверный код! Попробуй снова:")
                 logger.warning(f"Неудачная попытка входа с кодом: {entered_code}")
-            connection.close()
-            context.user_data["is_logging_in"] = False
         except Exception as e:
             logger.error(f"Ошибка при входе: {e}")
             update.message.reply_text("Ошибка входа. Попробуй позже.")
+        finally:
+            connection.close()
+        return
+
 
     # В блоке "🔛 Начать смену":
     if text == "🔛 Начать смену":
