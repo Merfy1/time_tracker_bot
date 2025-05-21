@@ -231,7 +231,6 @@ def handle_message(update: Update, context: CallbackContext):
             update.message.reply_text("Не удалось начать перерыв.")
         finally:
             connection.close()
-
     if text == "🔁 Закончить перерыв":
         employee_id = context.user_data.get("employee_id")
         connection = create_connection()
@@ -254,19 +253,59 @@ def handle_message(update: Update, context: CallbackContext):
             end_time = datetime.now()
             duration = int((end_time - start_time).total_seconds() / 60)
 
+            # Сохраняем перерыв
             cursor.execute("UPDATE breaks SET end_time = ?, delay_minutes = ? WHERE id = ?",
-                           (end_time.strftime("%Y-%m-%d %H:%M:%S"), duration, break_id))
+                        (end_time.strftime("%Y-%m-%d %H:%M:%S"), duration, break_id))
             connection.commit()
-            update.message.reply_text(f"Перерыв завершён. Длительность: {duration} мин.")
+
+            # Проверка на превышение 15 минут
+            exceed = max(0, duration - 15)
+            amount = exceed * 10  # 10 руб/минута
+
+            if exceed > 0:
+                # Получаем имя сотрудника и Telegram ID
+                cursor.execute("SELECT full_name, telegram_id FROM employees WHERE id = ?", (employee_id,))
+                emp_data = cursor.fetchone()
+                full_name, employee_telegram = emp_data if emp_data else ("<Неизвестный>", None)
+
+                # Добавляем штраф
+                cursor.execute("""
+                    INSERT INTO penalties (employee_id, shift_id, amount, reason)
+                    VALUES (?, ?, ?, ?)
+                """, (employee_id, shift_id, amount, f"Перерыв превышен на {exceed} минут"))
+                connection.commit()
+
+                # Уведомление сотруднику
+                if employee_telegram:
+                    context.bot.send_message(
+                        chat_id=employee_telegram,
+                        text=f"⚠️ Перерыв превышен на {exceed} мин.\nШтраф: {amount} руб"
+                    )
+
+                # Уведомление админу
+                context.bot.send_message(
+                    chat_id=ADMIN_ID,
+                    text=f"📣 Сотрудник {full_name} превысил перерыв на {exceed} мин.\nШтраф: {amount} руб"
+                )
+
+            # Ответ сотруднику
+            if exceed > 0:
+                update.message.reply_text(
+                    f"Перерыв завершён.\nДлительность: {duration} мин.\n⚠️ Превышено: {exceed} мин\n💸 Штраф: {amount} руб"
+                )
+            else:
+                update.message.reply_text(f"Перерыв завершён. Длительность: {duration} мин.")
+
             logger.info(f"Перерыв завершен для смены {shift_id}, длительность: {duration} мин.")
 
-            # После окончания перерыва вернуть кнопки смены
+            # Кнопки после завершения перерыва
             buttons = [
                 [KeyboardButton("☕ Начать перерыв")],
                 [KeyboardButton("🔚 Закончить смену")]
             ]
             reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
             update.message.reply_text("Выбери действие:", reply_markup=reply_markup)
+
         except Exception as e:
             logger.error(f"Ошибка окончания перерыва: {e}")
             update.message.reply_text("Не удалось закончить перерыв.")
@@ -294,26 +333,14 @@ def handle_message(update: Update, context: CallbackContext):
             total_break_delay = cursor.fetchone()[0] or 0
             salary = (duration_minutes - total_break_delay) * 2
             cursor.execute("UPDATE shifts SET end_time = ?, total_break_delay = ? WHERE id = ?",
-                        (end_time.strftime("%Y-%m-%d %H:%M:%S"), total_break_delay, shift_id))
+                           (end_time.strftime("%Y-%m-%d %H:%M:%S"), total_break_delay, shift_id))
             connection.commit()
-
-            # Получаем имя сотрудника для сообщения админу
-            cursor.execute("SELECT full_name FROM employees WHERE id = ?", (employee_id,))
-            full_name = cursor.fetchone()[0]
-
             update.message.reply_text(
                 f"✅ Смена завершена.\n"
                 f"🕒 Время на смене: {duration_minutes} мин\n"
                 f"🧘 Перерывы: {total_break_delay} мин\n"
                 f"💰 Заработано: {salary} руб"
             )
-
-            # Уведомление админу
-            context.bot.send_message(
-                chat_id=int(ADMIN_ID),
-                text=f"🔔 Сотрудник {full_name} завершил смену."
-            )
-
             buttons = [
                 [KeyboardButton("🔛 Начать смену")],
                 [KeyboardButton("📜 История смен")]
@@ -326,6 +353,7 @@ def handle_message(update: Update, context: CallbackContext):
         finally:
             connection.close()
         return
+
 def main():
     updater = Updater(TELEGRAM_TOKEN, use_context=True)
     dispatcher = updater.dispatcher
