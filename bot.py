@@ -1,5 +1,6 @@
 import logging
 import random
+from config import ADMIN_ID
 import requests
 from datetime import datetime
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
@@ -113,6 +114,7 @@ def handle_message(update: Update, context: CallbackContext):
             logger.error(f"Ошибка при входе: {e}")
             update.message.reply_text("Ошибка входа. Попробуй позже.")
 
+    # В блоке "🔛 Начать смену":
     if text == "🔛 Начать смену":
         employee_id = context.user_data.get("employee_id")
         if not employee_id:
@@ -126,10 +128,21 @@ def handle_message(update: Update, context: CallbackContext):
                 update.message.reply_text("Ты уже на смене.")
                 return
             cursor.execute("INSERT INTO shifts (employee_id, start_time) VALUES (?, ?)",
-                           (employee_id, datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+                        (employee_id, datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
             connection.commit()
+            
+            # Получаем имя сотрудника для сообщения админу
+            cursor.execute("SELECT full_name FROM employees WHERE id = ?", (employee_id,))
+            full_name = cursor.fetchone()[0]
+
             update.message.reply_text("Смена началась!")
             logger.info(f"Смена начата для сотрудника {employee_id}")
+
+            # Уведомление админу
+            context.bot.send_message(
+                chat_id=int(ADMIN_ID),
+                text=f"🔔 Сотрудник {full_name} начал смену."
+            )
 
             # Кнопки при начале смены
             buttons = [
@@ -281,14 +294,26 @@ def handle_message(update: Update, context: CallbackContext):
             total_break_delay = cursor.fetchone()[0] or 0
             salary = (duration_minutes - total_break_delay) * 2
             cursor.execute("UPDATE shifts SET end_time = ?, total_break_delay = ? WHERE id = ?",
-                           (end_time.strftime("%Y-%m-%d %H:%M:%S"), total_break_delay, shift_id))
+                        (end_time.strftime("%Y-%m-%d %H:%M:%S"), total_break_delay, shift_id))
             connection.commit()
+
+            # Получаем имя сотрудника для сообщения админу
+            cursor.execute("SELECT full_name FROM employees WHERE id = ?", (employee_id,))
+            full_name = cursor.fetchone()[0]
+
             update.message.reply_text(
                 f"✅ Смена завершена.\n"
                 f"🕒 Время на смене: {duration_minutes} мин\n"
                 f"🧘 Перерывы: {total_break_delay} мин\n"
                 f"💰 Заработано: {salary} руб"
             )
+
+            # Уведомление админу
+            context.bot.send_message(
+                chat_id=int(ADMIN_ID),
+                text=f"🔔 Сотрудник {full_name} завершил смену."
+            )
+
             buttons = [
                 [KeyboardButton("🔛 Начать смену")],
                 [KeyboardButton("📜 История смен")]
@@ -301,7 +326,6 @@ def handle_message(update: Update, context: CallbackContext):
         finally:
             connection.close()
         return
-
 def main():
     updater = Updater(TELEGRAM_TOKEN, use_context=True)
     dispatcher = updater.dispatcher
