@@ -1,6 +1,7 @@
 import logging
 from telegram import ParseMode
 import random
+import os
 from config import ADMIN_ID
 import requests
 from datetime import datetime
@@ -8,6 +9,8 @@ from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 from config import TELEGRAM_TOKEN
 from database import create_connection
+from dotenv import load_dotenv
+load_dotenv()
 
 # Настройка логирования
 logging.basicConfig(
@@ -17,26 +20,43 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-def get_random_image():
-    dog_api = "https://random.dog/woof.json"
-    cat_api = "https://api.thecatapi.com/v1/images/search"
+
+def get_random_image(query="office work team coffee"):
+    access_key = os.getenv("UNSPLASH_ACCESS_KEY")
+    url = "https://api.unsplash.com/photos/random"
+    params = {
+        "query": query,
+        "client_id": access_key,
+        "orientation": "landscape"
+    }
     try:
-        response = requests.get(dog_api, timeout=5)
-        if response.status_code == 200:
-            image_url = response.json().get("url")
-            if image_url:
-                return image_url
+        response = requests.get(url, params=params)
+        response.raise_for_status()
+        data = response.json()
+        return data['urls']['regular']
     except Exception as e:
-        logger.error(f"Ошибка с API собак: {e}")
-    try:
-        response = requests.get(cat_api, timeout=5)
-        if response.status_code == 200:
-            image_url = response.json()[0].get("url")
-            if image_url:
-                return image_url
-    except Exception as e:
-        logger.error(f"Ошибка с API котов: {e}")
-    return "https://placekitten.com/400/400"
+        logger.error(f"Ошибка при получении изображения: {e}")
+        return None
+# def get_random_image():
+#     dog_api = "https://random.dog/woof.json"
+#     cat_api = "https://api.thecatapi.com/v1/images/search"
+#     try:
+#         response = requests.get(dog_api, timeout=5)
+#         if response.status_code == 200:
+#             image_url = response.json().get("url")
+#             if image_url:
+#                 return image_url
+#     except Exception as e:
+#         logger.error(f"Ошибка с API собак: {e}")
+#     try:
+#         response = requests.get(cat_api, timeout=5)
+#         if response.status_code == 200:
+#             image_url = response.json()[0].get("url")
+#             if image_url:
+#                 return image_url
+#     except Exception as e:
+#         logger.error(f"Ошибка с API котов: {e}")
+#     return "https://placekitten.com/400/400"
 
 def start(update: Update, context: CallbackContext):
     user = update.message.from_user
@@ -135,8 +155,9 @@ def handle_message(update: Update, context: CallbackContext):
             result = cursor.fetchone()
             if result:
                 update.message.reply_text(f"Привет, {result[1]}! Ты успешно вошел. Начинай смену!")
-                image_url = get_random_image()
-                update.message.reply_photo(photo=image_url)
+                image_url = get_random_image("office discipline")
+                if image_url:
+                    update.message.reply_photo(photo=image_url)
                 logger.info(f"Пользователь {result[1]} вошел в систему (Код: {entered_code})")
                 context.user_data["employee_id"] = result[0]
                 context.user_data["is_logging_in"] = False  # Убираем только при успешном входе
@@ -246,6 +267,9 @@ def handle_message(update: Update, context: CallbackContext):
         employee_id = context.user_data.get("employee_id")
         connection = create_connection()
         cursor = connection.cursor()
+        image_url = get_random_image("coffee break")
+        if image_url:
+            update.message.reply_photo(photo=image_url)
         try:
             cursor.execute("SELECT id FROM shifts WHERE employee_id = ? AND end_time IS NULL", (employee_id,))
             shift = cursor.fetchone()
