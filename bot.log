@@ -67,3 +67,736 @@
 2025-05-21 22:17:04,707 - INFO - Перерыв начат для смены 23
 2025-05-21 22:17:10,127 - INFO - Перерыв завершен для смены 23, длительность: 0 мин.
 2025-05-21 22:17:22,257 - INFO - Received signal 2 (SIGINT), stopping...
+2025-05-25 00:31:49,787 - INFO - Бот запущен!
+2025-05-25 00:38:29,689 - INFO - Пользователь Merfy (633566051) запустил бота.
+2025-05-25 00:38:58,896 - INFO - Зарегистрирован новый пользователь: Александр Стороженко Евгеньевич (Код: CODE-7435)
+2025-05-25 00:39:14,438 - INFO - Пользователь Александр Стороженко Евгеньевич вошел в систему (Код: CODE-7435)
+2025-05-25 00:39:21,872 - INFO - Смена начата для сотрудника 20
+2025-05-25 00:39:59,096 - INFO - Перерыв начат для смены 24
+2025-05-25 00:41:36,841 - INFO - Перерыв завершен для смены 24, длительность: 1 мин.
+2025-05-25 01:28:40,361 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 01:28:40,362 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 01:44:05,445 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 01:44:05,446 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 01:59:18,417 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 01:59:18,417 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 02:16:24,352 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 02:16:24,353 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 02:33:16,337 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 02:33:16,338 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 02:38:08,309 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 02:38:08,312 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 02:54:09,199 - ERROR - Error while getting Updates: urllib3 HTTPError ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2025-05-25 02:54:09,200 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 402, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 398, in _make_request
+    httplib_response = conn.getresponse()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 1349, in getresponse
+    response.begin()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 316, in begin
+    version, status, reason = self._read_status()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 285, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 218, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 68, in request
+    return self.request_encode_body(method, url, fields=fields,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 665, in urlopen
+    retries = retries.increment(method, url, error=e, _pool=self,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/retry.py", line 347, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/packages/six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 402, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 398, in _make_request
+    httplib_response = conn.getresponse()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 1349, in getresponse
+    response.begin()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 316, in begin
+    version, status, reason = self._read_status()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 285, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+telegram.vendor.ptb_urllib3.urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 224, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2025-05-25 03:11:58,517 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 03:11:58,518 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 03:46:49,792 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 03:46:49,793 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 05:09:32,767 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connectionpool.HTTPSConnectionPool object at 0x10527bc70>, 'Connect timed out. (connect timeout=5.0)')': /bot8195418105:AAEeIawcudicnaQ3A35nA7HKFIs-zHsQ-l0/getUpdates
+2025-05-25 05:09:33,856 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 05:09:33,856 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 06:30:13,963 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 06:30:13,964 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 07:08:47,043 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 07:08:47,044 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 07:58:21,870 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 07:58:21,870 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 09:03:17,686 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 09:03:17,687 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 09:58:17,042 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 09:58:17,043 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 10:51:10,675 - ERROR - Error while getting Updates: urllib3 HTTPError ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+2025-05-25 10:51:10,676 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 402, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 398, in _make_request
+    httplib_response = conn.getresponse()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 1349, in getresponse
+    response.begin()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 316, in begin
+    version, status, reason = self._read_status()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 277, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+ConnectionResetError: [Errno 54] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 218, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 68, in request
+    return self.request_encode_body(method, url, fields=fields,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 665, in urlopen
+    retries = retries.increment(method, url, error=e, _pool=self,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/retry.py", line 347, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/packages/six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 402, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 398, in _make_request
+    httplib_response = conn.getresponse()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 1349, in getresponse
+    response.begin()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 316, in begin
+    version, status, reason = self._read_status()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 277, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 224, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+2025-05-25 11:44:53,007 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 11:44:53,008 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 12:12:52,232 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 12:12:52,233 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 13:13:39,958 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 13:13:39,959 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 13:45:41,926 - ERROR - Error while getting Updates: urllib3 HTTPError ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+2025-05-25 13:45:41,927 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 402, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 398, in _make_request
+    httplib_response = conn.getresponse()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 1349, in getresponse
+    response.begin()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 316, in begin
+    version, status, reason = self._read_status()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 277, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+ConnectionResetError: [Errno 54] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 218, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 68, in request
+    return self.request_encode_body(method, url, fields=fields,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 665, in urlopen
+    retries = retries.increment(method, url, error=e, _pool=self,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/retry.py", line 347, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/packages/six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 402, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 398, in _make_request
+    httplib_response = conn.getresponse()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 1349, in getresponse
+    response.begin()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 316, in begin
+    version, status, reason = self._read_status()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 277, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 224, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+2025-05-25 15:05:35,716 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connectionpool.HTTPSConnectionPool object at 0x10527bc70>, 'Connect timed out. (connect timeout=5.0)')': /bot8195418105:AAEeIawcudicnaQ3A35nA7HKFIs-zHsQ-l0/getUpdates
+2025-05-25 15:05:36,742 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 15:05:36,742 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 15:48:04,284 - ERROR - Error while getting Updates: urllib3 HTTPError ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+2025-05-25 15:48:04,284 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 402, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 398, in _make_request
+    httplib_response = conn.getresponse()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 1349, in getresponse
+    response.begin()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 316, in begin
+    version, status, reason = self._read_status()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 277, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+ConnectionResetError: [Errno 54] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 218, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 68, in request
+    return self.request_encode_body(method, url, fields=fields,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 665, in urlopen
+    retries = retries.increment(method, url, error=e, _pool=self,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/retry.py", line 347, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/packages/six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 402, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 398, in _make_request
+    httplib_response = conn.getresponse()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 1349, in getresponse
+    response.begin()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 316, in begin
+    version, status, reason = self._read_status()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 277, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 224, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+2025-05-25 16:08:57,726 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 16:08:57,726 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 16:09:27,801 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 16:09:27,802 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 16:09:57,876 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 16:09:57,877 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 16:10:27,940 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 16:10:27,941 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 16:10:58,101 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 16:10:58,103 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 16:11:28,172 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 16:11:28,174 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 16:11:58,242 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 16:11:58,243 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 16:12:28,334 - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 16:12:28,335 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 332, in _network_loop_retry
+    if not action_cb():
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/ext/updater.py", line 291, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 66, in decorator
+    result = func(self, *args, **kwargs)
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/bot.py", line 1982, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 324, in post
+    result = self._request_wrapper('POST', url,
+  File "/Users/merfy/Desktop/time_tracker_bot/venv/lib/python3.9/site-packages/telegram/utils/request.py", line 242, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-05-25 18:20:35,936 - INFO - Бот запущен!
+2025-05-25 18:20:50,514 - INFO - Пользователь Merfy (633566051) запустил бота.
+2025-05-25 18:24:58,459 - INFO - Пользователь Нікіта (473696061) запустил бота.
+2025-05-25 18:25:04,303 - INFO - Зарегистрирован новый пользователь: I (Код: CODE-9143)
+2025-05-25 18:25:15,420 - INFO - Пользователь I вошел в систему (Код: CODE-9143)
+2025-05-25 18:25:17,472 - INFO - Смена начата для сотрудника 21
+2025-05-25 18:25:29,757 - INFO - Смена начата для сотрудника 21
+2025-05-25 18:27:45,457 - INFO - Received signal 2 (SIGINT), stopping...

@@ -37,26 +37,6 @@ def get_random_image(query="office work team coffee"):
     except Exception as e:
         logger.error(f"Ошибка при получении изображения: {e}")
         return None
-# def get_random_image():
-#     dog_api = "https://random.dog/woof.json"
-#     cat_api = "https://api.thecatapi.com/v1/images/search"
-#     try:
-#         response = requests.get(dog_api, timeout=5)
-#         if response.status_code == 200:
-#             image_url = response.json().get("url")
-#             if image_url:
-#                 return image_url
-#     except Exception as e:
-#         logger.error(f"Ошибка с API собак: {e}")
-#     try:
-#         response = requests.get(cat_api, timeout=5)
-#         if response.status_code == 200:
-#             image_url = response.json()[0].get("url")
-#             if image_url:
-#                 return image_url
-#     except Exception as e:
-#         logger.error(f"Ошибка с API котов: {e}")
-#     return "https://placekitten.com/400/400"
 
 def start(update: Update, context: CallbackContext):
     user = update.message.from_user
